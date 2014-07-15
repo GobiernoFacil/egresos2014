@@ -22,9 +22,9 @@ class Egresos2014 extends CI_Controller {
 
     /* add the pp and egresos for each ramo */
     foreach($ramos as $ramo){
-      $ramo->id = (int)$ramo->id;
-      $ramo->ramo = (int)$ramo->ramo;
-      $ramo->pp = $this->pp->count_by_ramo($ramo->ramo);
+      $ramo->id      = (int)$ramo->id;
+      $ramo->ramo    = (int)$ramo->ramo;
+      $ramo->pp      = $this->pp->count_by_ramo($ramo->ramo);
       $ramo->egresos = $this->egresos->count_by_ramo($ramo->ramo);
     }
 
@@ -47,7 +47,7 @@ class Egresos2014 extends CI_Controller {
   }
 
   public function count_egresos_by_pp($pp_clave){
-    $egresos_num = $this->egresos->count_by_pp($pp_clave){
+    $egresos_num = $this->egresos->count_by_pp($pp_clave);
     $this->output->set_content_type("application/json");
     $this->output->set_output(json_encode(["egresos_num" => $egresos_num, "ramo" => $ramo]));
   }
