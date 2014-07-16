@@ -13,6 +13,24 @@ class Programas_model extends CI_Model{
     parent::__construct();
   }
 
+  public function get_by_ramo($ramo, $limit, $offset = 0, $sort = FALSE){
+    if($ramo){
+      $this->db->where("ramo", $ramo);
+    }
+    if($sort){
+      $this->db->order_by($sort, "asc");
+    }
+    $this->db->from(self::TABLE);
+    $this->db->limit($limit, $offset);
+    $query = $this->db->get();
+
+    return $query->result();
+  }
+
+
+  /*
+  * 
+  */
   public function count_by_ramo($ramo){
     $this->db->where("ramo", $ramo);
     $this->db->from(self::TABLE);
