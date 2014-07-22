@@ -47,7 +47,7 @@ class Egresos2014 extends CI_Controller {
   }
 
   public function count_egresos_by_pp($pp_clave){
-    $egresos_num = $this->egresos->count_by_pp($pp_clave){
+    $egresos_num = $this->egresos->count_by_pp($pp_clave);
     $this->output->set_content_type("application/json");
     $this->output->set_output(json_encode(["egresos_num" => $egresos_num, "ramo" => $ramo]));
   }
